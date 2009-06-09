@@ -32,6 +32,23 @@ if test "$os_win32" = "yes"; then
   enable_shared=yes
 fi
 
+dnl check for osx platform
+AC_MSG_CHECKING([for Mac OS X platform])
+case "$host" in
+  *-*-darwin*)
+    platform_osx=yes
+    ;;
+  *)
+    platform_osx=no
+    ;;
+esac
+AC_MSG_RESULT([$platform_osx])
+AM_CONDITIONAL(PLATFORM_OSX, test "$platform_osx" = "yes")
+
+if test "$platform_osx" = "yes"; then
+	AC_DEFINE([PLATFORM_OSX],[1],[Defined if platform is Mac OSX])
+fi
+
 AC_PROG_CC
 AC_PROG_CXX
 AC_ISC_POSIX

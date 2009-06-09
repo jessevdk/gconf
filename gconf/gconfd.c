@@ -319,7 +319,7 @@ gconf_server_load_sources(void)
   gchar* conffile;
   GConfSources* sources = NULL;
   GError* error = NULL;
-  
+
   conffile = g_strconcat(GCONF_CONFDIR, "/path", NULL);
 
   addresses = gconf_load_source_path(conffile, NULL);

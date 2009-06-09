@@ -80,8 +80,30 @@ char *_gconf_win32_replace_prefix (const char *configure_time_path);
 const char *_gconf_win32_get_home_dir (void);
 
 #else
-
 #define DEV_NULL "/dev/null"
+
+#ifdef PLATFORM_OSX
+#undef GCONF_LOCALE_DIR
+const char *_gconf_osx_get_locale_dir (void) G_GNUC_CONST;
+#define GCONF_LOCALE_DIR _gconf_osx_get_locale_dir ()
+
+#undef GCONF_CONFDIR
+const char *_gconf_osx_get_confdir (void) G_GNUC_CONST;
+#define GCONF_CONFDIR _gconf_osx_get_confdir ()
+
+#undef GCONF_ETCDIR
+const char *_gconf_osx_get_etcdir (void) G_GNUC_CONST;
+#define GCONF_ETCDIR _gconf_osx_get_etcdir ()
+
+#undef GCONF_SERVERDIR
+const char *_gconf_osx_get_serverdir (void) G_GNUC_CONST;
+#define GCONF_SERVERDIR _gconf_osx_get_serverdir ()
+
+#undef GCONF_BACKEND_DIR
+const char *_gconf_osx_get_backend_dir (void) G_GNUC_CONST;
+#define GCONF_BACKEND_DIR _gconf_osx_get_backend_dir ()
+
+#endif
 
 #endif
 
